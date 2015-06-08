@@ -1,8 +1,7 @@
 <?php
- 
 /*
- * Following code will get single product details
- * A product is identified by product id (pid)
+ * Following code will get single staff details
+ * Staff is identified by username (username) and password (password)
  */
  
 // array for JSON response
@@ -19,7 +18,7 @@ if (isset($_GET["username"]) && isset($_GET["password"])) {
     $username = $_GET['username'];
     $password = $_GET['password'];
  
-    // get a product from products table
+    // get staff from staff table
     $query =
 		"SELECT s.*
 		FROM STAFF s
@@ -33,15 +32,15 @@ if (isset($_GET["username"]) && isset($_GET["password"])) {
     if (!empty($result)) {
         // check for empty result
         if (mysql_num_rows($result) > 0) {
- 
             $result = mysql_fetch_array($result);
 
-            	$staff = array();
-		$staff["staff_id"] = $result["staff_id"];
-		$staff["user_id"] = $result["user_id"];
-		$staff["staff_code"] = $result["staff_code"];
-		$staff["job_title"] = $result["job_title"];
-		$staff["pin_code"] = $result["pin_code"];
+            $staff = array();
+			$staff["staff_id"] = $result["staff_id"];
+			$staff["user_id"] = $result["user_id"];
+			$staff["staff_code"] = $result["staff_code"];
+			$staff["job_title"] = $result["job_title"];
+			$staff["pin_code"] = $result["pin_code"];
+			
             // success
             $response["success"] = 1;
  
@@ -53,7 +52,7 @@ if (isset($_GET["username"]) && isset($_GET["password"])) {
             // echoing JSON response
             echo json_encode($response);
         } else {
-            // no patient found
+            // no staff found
             $response["success"] = 0;
             $response["message"] = "No matching user found";
  
@@ -61,7 +60,7 @@ if (isset($_GET["username"]) && isset($_GET["password"])) {
             echo json_encode($response);
         }
     } else {
-        // no patient found
+        // no staff found
         $response["success"] = 0;
         $response["message"] = "No user found";
  

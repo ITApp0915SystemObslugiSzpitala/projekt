@@ -1,5 +1,4 @@
 <?php
-
 /*
  * A class file to connect to database
  */
@@ -41,7 +40,5 @@ class DB_CONNECT {
         // closing db connection
         mysql_close();
     }
- 
 }
- 
 ?>
