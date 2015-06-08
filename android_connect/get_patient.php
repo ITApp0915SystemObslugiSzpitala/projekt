@@ -15,10 +15,10 @@ $db = new DB_CONNECT();
  
 // check for post data
 if (isset($_GET["pid"])) {
-    $pid = $_GET['pid'];
+	$pid = $_GET['pid'];
  
-    // get a patient from patients table
-    $query =
+	// get a patient from patients table
+	$query =
 		"SELECT p.*,id.*,ti.*
 		FROM PATIENTS p
 		INNER JOIN PATIENT_IDENTITY_DOCS pid
@@ -30,14 +30,14 @@ if (isset($_GET["pid"])) {
 		ON ti.type_item_id = id.document_type_id
 		WHERE id.document_number = '$pid'";
  
-    $result = mysql_query($query);
+	$result = mysql_query($query);
  
-    if (!empty($result)) {
-        // check for empty result
-        if (mysql_num_rows($result) > 0) {
-            $result = mysql_fetch_array($result);
+	if (!empty($result)) {
+		// check for empty result
+		if (mysql_num_rows($result) > 0) {
+			$result = mysql_fetch_array($result);
 
-            $patient = array();
+			$patient = array();
 			$patient["patient_id"] = $result["patient_id"];
 			$patient["forename"] = $result["forename"];
 			$patient["surname"] = $result["surname"];
@@ -53,40 +53,40 @@ if (isset($_GET["pid"])) {
 			$identity_document["document_number"] = $result["document_number"];
 			$identity_document["document_type"] = $result["value"];
 			
-            // success
-            $response["success"] = 1;
+			// success
+			$response["success"] = 1;
  
-            // user node
-            $response["patient"] = array();
-            $response["identity_document"] = array();
+			// user node
+			$response["patient"] = array();
+			$response["identity_document"] = array();
  
-            array_push($response["patient"], $patient);
-            array_push($response["identity_document"], $identity_document);
+			array_push($response["patient"], $patient);
+			array_push($response["identity_document"], $identity_document);
  
-            // echoing JSON response
-            echo json_encode($response);
-        } else {
-            // no patient found
-            $response["success"] = 0;
-            $response["message"] = "No matching patient found";
+			// echoing JSON response
+			echo json_encode($response);
+		} else {
+			// no patient found
+			$response["success"] = 0;
+			$response["message"] = "No matching patient found";
  
-            // echo no users JSON
-            echo json_encode($response);
-        }
-    } else {
-        // no patient found
-        $response["success"] = 0;
-        $response["message"] = "No patient found";
+			// echo no users JSON
+			echo json_encode($response);
+		}
+	} else {
+		// no patient found
+		$response["success"] = 0;
+		$response["message"] = "No patient found";
  
-        // echo no users JSON
-        echo json_encode($response);
-    }
+		// echo no users JSON
+		echo json_encode($response);
+	}
 } else {
-    // required field is missing
-    $response["success"] = 0;
-    $response["message"] = "Required field(s) is missing";
+	// required field is missing
+	$response["success"] = 0;
+	$response["message"] = "Required field(s) is missing";
  
-    // echoing JSON response
-    echo json_encode($response);
+	// echoing JSON response
+	echo json_encode($response);
 }
 ?>

@@ -15,11 +15,11 @@ $db = new DB_CONNECT();
  
 // check for post data
 if (isset($_GET["username"]) && isset($_GET["password"])) {
-    $username = $_GET['username'];
-    $password = $_GET['password'];
+	$username = $_GET['username'];
+	$password = $_GET['password'];
  
-    // get staff from staff table
-    $query =
+	// get staff from staff table
+	$query =
 		"SELECT s.*
 		FROM STAFF s
 		INNER JOIN USERS u
@@ -27,52 +27,52 @@ if (isset($_GET["username"]) && isset($_GET["password"])) {
 		WHERE CONCAT(u.forename,u.surname) = '$username'
 		AND u.password = '$password'";
  
-    $result = mysql_query($query);
+	$result = mysql_query($query);
  
-    if (!empty($result)) {
-        // check for empty result
-        if (mysql_num_rows($result) > 0) {
-            $result = mysql_fetch_array($result);
+	if (!empty($result)) {
+		// check for empty result
+		if (mysql_num_rows($result) > 0) {
+			$result = mysql_fetch_array($result);
 
-            $staff = array();
+			$staff = array();
 			$staff["staff_id"] = $result["staff_id"];
 			$staff["user_id"] = $result["user_id"];
 			$staff["staff_code"] = $result["staff_code"];
 			$staff["job_title"] = $result["job_title"];
 			$staff["pin_code"] = $result["pin_code"];
 			
-            // success
-            $response["success"] = 1;
+			// success
+			$response["success"] = 1;
  
-            // user node
-            $response["staff"] = array();
+			// user node
+			$response["staff"] = array();
  
-            array_push($response["staff"], $staff);
+			array_push($response["staff"], $staff);
  
-            // echoing JSON response
-            echo json_encode($response);
-        } else {
-            // no staff found
-            $response["success"] = 0;
-            $response["message"] = "No matching user found";
+			// echoing JSON response
+			echo json_encode($response);
+		} else {
+			// no staff found
+			$response["success"] = 0;
+			$response["message"] = "No matching user found";
  
-            // echo no users JSON
-            echo json_encode($response);
-        }
-    } else {
-        // no staff found
-        $response["success"] = 0;
-        $response["message"] = "No user found";
+			// echo no users JSON
+			echo json_encode($response);
+		}
+	} else {
+		// no staff found
+		$response["success"] = 0;
+		$response["message"] = "No user found";
  
-        // echo no users JSON
-        echo json_encode($response);
-    }
+		// echo no users JSON
+		echo json_encode($response);
+	}
 } else {
-    // required field is missing
-    $response["success"] = 0;
-    $response["message"] = "Required field(s) is missing";
+	// required field is missing
+	$response["success"] = 0;
+	$response["message"] = "Required field(s) is missing";
  
-    // echoing JSON response
-    echo json_encode($response);
+	// echoing JSON response
+	echo json_encode($response);
 }
 ?>
