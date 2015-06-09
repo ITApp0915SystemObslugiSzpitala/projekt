@@ -1,0 +1,38 @@
+2_3_2015
+	Wykres Gaunta przedstawiony i omówiony na spotkaniu projektowym.
+	
+16_3_2015
+	Prace wykonywanie zgodnie z planem. 
+	Rozpoczęcie testów cząstkowych, spradzenie działania modułów logowania.
+	
+30_3_2015
+	Prace bez opóźnień.
+	Zmiany w bazie danych. 
+		*Rozbudowa bazy o tabele przechowujące kody chorób, kody operacji, leki.
+		*Delikatna zmiana struktury bazy w części odpowiedzialnej za karty choroby.
+	Zmainy w module obsługi pacienta.
+		*Poprawa i zmiana metod dodającycg i przyjmujących pacienta.
+	Testy cząstkowe akceptowalne.
+	
+14_4_2015
+	Brak opóżnień. Prace idą zgodnie z planem.
+	
+30_4_2015
+	Zmiana w trybie wykonywanych prac.
+	Aplikacja mobilna i internetowa.
+		*Przesunięcie terminu prac nad Qr code na wcześniejszy okres.
+	Możliwośc pojawienia się opóźniej wzwiąsku z weekendem majowym.
+	
+12_5_2015
+	Wykryty błąd z Qr code.
+		*Rozminięcie się generacji Qr code'a z jego interpretacją.
+		 Redefincja i poprawa generacji oraz interpretacji.
+	Podział okresu testów cząstkowych.
+		*Przesunięcie części testów na okres póżniejszczy w oczekiwaniu 
+		 na poprawę blędu i zakończenie modułu obsługi pacienta
+		 aplikacji internetowej.
+
+30_5_2015
+	Aplikacja moblina
+		*Prace praktycznie zakończone.
+		*Optymalizacja kodu
